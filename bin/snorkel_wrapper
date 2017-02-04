@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd "${SNAP}/lib/node_modules/snorkel"
+ENV=snapcraft node app.js
