@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 
-cd "${SNAP_USER_DATA}"
+cd "${SNAP_USER_COMMON}"
 echo "ADDING USER!"
-echo "SNAP DIR: ${SNAP_USER_DATA}"
+echo "SNAP DIR: ${SNAP_USER_COMMON}"
 mkdir config/ 2>/dev/null
 bash "${SNAP}/lib/node_modules/snorkel/scripts/add_user.sh" $@

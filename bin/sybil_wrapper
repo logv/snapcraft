@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-cd "${SNAP_USER_DATA}"
+cd "${SNAP_USER_COMMON}"
 sybil $@
