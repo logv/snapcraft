@@ -3,29 +3,34 @@ export SNAP="$APPDIR"
 export SNAP_ARCH="amd64"
 export SNAP_VERSION="3" # for example (get the version from the original snap)
 
-mkdir -p $SNAP_USER_DATA
 export SNAP_USER_DATA="$HOME/snap/snorkel/common/"
 export SNAP_USER_COMMON="$HOME/snap/snorkel/common/"
-
-echo "RUNNING SNAP!"
+mkdir -p $SNAP_USER_DATA
 
 BIN=$0
 CMD=$1
-echo "CMD IS", $CMD
 LASTARGS="${@:2}"
-echo "ARGS ARE", $LASTARGS
+
+if [ -z "$CMD" ]; then
+  echo "Usage: ./snorkel.bin frontend|backend|adduser"
+  exit
+fi
 
 if [ ${CMD} == "frontend" ]; then
   "$APPDIR/command-frontend.wrapper" $LASTARGS
+  exit
 fi
 
 if [ ${CMD} == "backend" ]; then
   "$APPDIR/command-backend.wrapper" $LASTARGS
+  exit
 fi
 
 if [ ${CMD} == "adduser" ]; then
   "$APPDIR/command-add-user.wrapper" $LASTARGS
+  exit
 fi
 
 
-
+echo "Usage: ./snorkel.bin frontend|backend|adduser"
+exit
