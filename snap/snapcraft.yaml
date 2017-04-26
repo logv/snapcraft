@@ -1,5 +1,5 @@
 name: snorkel
-version: '0.0.19' # just for humans, typically '1.2+git' or '1.3.2'
+version: '0.0.20' # just for humans, typically '1.2+git' or '1.3.2'
 summary: logv analytics server and backend
 description: |
   The snorkel analytics server is an all in instrumentation system. Comprised
@@ -42,6 +42,10 @@ parts:
     plugin: go
     source: git://github.com/logv/sybil
     # source: /home/okay/tonka/src/sybil/
+    go-importpath: github.com/logv/sybil
+
+    build-packages:
+      - libluajit-5.1-dev
 
   snapglue:
     source: git://github.com/logv/snapcraft
