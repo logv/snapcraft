@@ -43,6 +43,8 @@ parts:
     source: git://github.com/logv/sybil
     # source: /home/okay/tonka/src/sybil/
     go-importpath: github.com/logv/sybil
+    go-buildtags:
+      - luajit
 
     build-packages:
       - libluajit-5.1-dev
