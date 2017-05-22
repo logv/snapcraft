@@ -1,4 +1,22 @@
 #!/usr/bin/env bash
 
+# TODO: create users.rbac if it doesn't exist
+RBAC_FILE="${SNAP_USER_COMMON}/config/users.rbac"
+if [ ! -f ${RBAC_FILE} ]; then
+cat > ${RBAC_FILE} << 'USER_ROLES'
+# role definitions looks like
+# role:perms:tables:users
+# which can be expressed as
+# role:perm1,perm2,:table1,table2,:user1,user2,:
+
+# supergroup (which contains admin) can do anything
+superuser:*:*:admin
+
+# anyone can query any tables
+guest:query:*:*
+USER_ROLES
+fi
+
+
 cd "${SNAP}/lib/node_modules/snorkel"
 ENV=snapcraft node app.js
